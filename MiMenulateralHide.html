@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Lateral Oculto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos para el menú lateral */
+        .sidebar {
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            transition: 0.3s;
+            transform: translateX(-250px);
+        }
+        .sidebar.show {
+            transform: translateX(0);
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            color: #007bff;
+        }
+        .sidebar .submenu {
+            padding-left: 30px;
+        }
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para abrir/cerrar el menú -->
+    <button class="openbtn" onclick="toggleSidebar()">☰ Menú</button>
+
+    <!-- Menú Lateral -->
+    <div class="sidebar" id="mySidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#submenu1" aria-expanded="false" aria-controls="submenu1">
+                    Menú Desplegable
+                </a>
+                <div class="collapse" id="submenu1">
+                    <ul class="nav flex-column submenu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sub Opción 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sub Opción 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sub Opción 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Opción 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Opción 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Opción 4</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
+                <h2>Contenido Principal</h2>
+                <p>Este es el contenido principal de la página.</p>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("mySidebar");
+            sidebar.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

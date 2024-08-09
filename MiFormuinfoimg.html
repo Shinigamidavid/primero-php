@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y Tarjetas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Formulario de Carga</h2>
+        <form action="MiProcesar_formulinfoimg.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="campo1">Campo de Texto 1</label>
+                <input type="text" class="form-control" id="campo1" name="campo1" required>
+            </div>
+            <div class="form-group">
+                <label for="campo2">Campo de Texto 2</label>
+                <input type="text" class="form-control" id="campo2" name="campo2" required>
+            </div>
+            <div class="form-group">
+                <label for="campo3">Campo de Texto 3</label>
+                <input type="text" class="form-control" id="campo3" name="campo3" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imagen1">Cargar Imagen (JPG, PNG)</label>
+                <input type="file" class="form-control-file" id="imagen1" name="imagen1" accept="image/jpeg, image/png" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+
+        <h2 class="text-center mt-5">Tarjetas Generadas</h2>
+        <div class="row" id="cards-container">
+            <!-- Aquí se insertarán las tarjetas generadas -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('tarjetas.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('cards-container').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
